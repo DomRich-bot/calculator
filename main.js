@@ -27,7 +27,7 @@ function storeOp(op) {
 };
 
 function storeValue(num) {
-    if(currentValue.length <= 9){
+    if(currentValue.length <= 10){
         currentValue += num;
     };
 };
@@ -38,26 +38,57 @@ function toNegative(num) {
 };
 
 function add(a,b) {
-    currentValue = parseInt(a) + parseInt(b);
-    mainScreen.textContent = currentValue;
-    previousScreen.textContent = ""
+    if (((a + b).toString()).length > 10) {
+        currentValue = (parseInt(a) + parseInt(b)).toExponential(3);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
+    else {
+        currentValue = parseInt(a) + parseInt(b);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
 };
 
 function subtract(a,b) {
-    currentValue = a - b;
-    mainScreen.textContent = currentValue;
-    previousScreen.textContent = ""
+    if (((a - b).toString()).length > 10) {
+        currentValue = (a - b).toExponential(3);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
+    else {
+        currentValue = a - b;
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
 };
 
 function multiply(a,b) {
-    currentValue = a * b;
-    mainScreen.textContent = currentValue;
-    previousScreen.textContent = ""
+    if (((a * b).toString()).length > 10) {
+        currentValue = (a * b).toExponential(3);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
+    else {
+        currentValue = (a * b);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
 };
 
 function divide(a,b) {
     if(b == 0) {
         currentValue = 'UH UH UH'
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
+    else if(((a / b).toString()).length > 10 && (a/b > 999999999)){
+        currentValue = (a / b).toExponential(3);
+        mainScreen.textContent = currentValue;
+        previousScreen.textContent = ""
+    }
+    else if(((a / b).toString()).length > 10 && (a/b < 999999999)){
+        currentValue = roundNumber(a / b);
         mainScreen.textContent = currentValue;
         previousScreen.textContent = ""
     }
@@ -79,6 +110,10 @@ function operate(a, operator, b) {
         return divide(a,b);
     }
 };
+
+function roundNumber(num) {
+    return Math.round(num * 100000) / 100000
+}
 
 function erase() {
     mainScreen.innerText = '';
