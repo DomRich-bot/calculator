@@ -95,13 +95,13 @@ function divide(a,b) {
         mainScreen.textContent = currentValue;
         previousScreen.textContent = ""
     }
-    //Round to exponential with large numbers, round to 5 decimals with smaller numbers
-    else if(((a / b).toString()).length > 10 && (a/b > 999999999)){
+    //Round to exponential with large numbers, round to 4 decimals with smaller numbers
+    else if(((a / b).toString()).length > 10 && (a/b > 99999)){
         currentValue = (a / b).toExponential(3);
         mainScreen.textContent = currentValue;
         previousScreen.textContent = ""
     }
-    else if(((a / b).toString()).length > 10 && (a/b < 999999999)){
+    else if(((a / b).toString()).length > 10 && (a/b < 99999)){
         currentValue = roundNumber(a / b);
         mainScreen.textContent = currentValue;
         previousScreen.textContent = ""
@@ -128,7 +128,7 @@ function operate(a, operator, b) {
 
 
 function roundNumber(num) {
-    return Math.round(num * 100000) / 100000
+    return Math.round(num * 10000) / 10000
 };
 
 

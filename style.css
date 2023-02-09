@@ -31,8 +31,9 @@ body {
     padding-right: 5px;
     background-color: lightgrey;
     border: solid rgb(31, 27, 27);
+    border-radius: 8px;
     font-family: monospace;
-    color: rgb(10, 15, 15);
+    color: rgb(9, 12, 12);
 }
 
 .previous {
@@ -40,7 +41,7 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 40px;
-    color:rgb(33, 46, 46);
+    color:rgba(28, 34, 34, 0.966);
     margin-bottom: 0;
 }
 
